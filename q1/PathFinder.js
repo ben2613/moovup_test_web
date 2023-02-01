@@ -54,7 +54,6 @@ export default class PathFinder {
 class Node {
     constructor(name) {
         this.name = name
-        this.walked = false
         this.connectedNodes = new Set()
     }
     connect(node) {
