@@ -1,0 +1,11 @@
+First please go inside q1 dir in your shell
+
+If you have Node.js installed, you can run with
+
+`npm run start` or `node main.js`
+
+else if you have docker install, you can run with
+
+`docker run -it --rm --name moovup_test_q1 -v ${PWD}:/usr/src/app -w /usr/src/app node:current-slim npm run start`
+
+`run_with_docker.ps1` & `run_with_docker.sh` have the same content in case you wanna type less
