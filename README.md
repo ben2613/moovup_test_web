@@ -37,7 +37,9 @@ This will pull a slim version node image, mount the current directory and run `n
 
 `docker run -it -p 8080:80 --rm --name dockerize-vuejs-app-1 ben2613/moovup-test`
 
-This will build a small docker image and then run it, exposing its 80 port
+This will build a small docker image and then run it, exposing its 80 port to 8080 port
+
+Then you can access it by `http://localhost:8080`
 
 ### Clean up
 `docker image rm ben2613/moovup-test`
