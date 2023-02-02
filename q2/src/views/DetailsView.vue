@@ -15,11 +15,17 @@ const msg = 'hi'
 
 <template>
   <div>
-    <div v-if="friend.location.longitude === null">
-      I am getting null at this location.longitude, if this is not expected please check your API
-    </div>
-    <GoogleMapEmbed v-if="friend" :center="{lat: friend.location.latitude ?? 0, lng: friend.location.longitude ?? 0}" />
-    {{ friend?.name.last }}
+    <v-alert type="warning" class="mb-2" v-if="friend !== null && friend.location.longitude === null">
+      I am getting null value at this location.longitude, if this is not expected please check your API
+    </v-alert>
+    <v-card v-if="friend" class="mx-auto">
+      <GoogleMapEmbed :center="{lat: friend.location.latitude ?? 0, lng: friend.location.longitude ?? 0}" />
+      <v-list-item
+        :title="friend.name.first + ' ' + friend.name.last"
+        :prepend-avatar="friend.picture"
+        :subtitle="friend.email"
+      />
+    </v-card>
 
   </div>
 </template>
