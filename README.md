@@ -10,7 +10,7 @@
 
 `npm run start` or `node main.js`
 
-#### else if you have docker install, you can run with
+#### else if you have docker installed, you can run with
 
 `docker run -it --rm --name moovup_test_q1 -v ${PWD}:/usr/src/app -w /usr/src/app node:current-slim npm run start`
 
@@ -31,9 +31,10 @@ This will pull a slim version node image, mount the current directory and run `n
 `npm install && npm run dev -- --host`
 
 
-#### else if you have docker install, you can run with
+#### else if you have docker installed, you can run with
 
 `docker build -t ben2613/moovup-test .`
+
 `docker run -it -p 8080:80 --rm --name dockerize-vuejs-app-1 ben2613/moovup-test`
 
 This will build a small docker image and then run it, exposing its 80 port
