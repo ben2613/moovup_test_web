@@ -19,6 +19,11 @@ class PathFinder {
             this.nodes[start].connect(this.nodes[end])
         })
     }
+    /**
+     * @param {string} start name of node
+     * @param {string} stop name of node
+     * @returns {Generator}
+     */
     findAllPaths(start, stop) {
         let visitedNodes = new Set()
         let startNode = this.nodes[start]
@@ -26,6 +31,14 @@ class PathFinder {
         let paths = [] // contain sequences of nodes
         return this.subFindAllPaths(startNode, stopNode, visitedNodes, paths)
     }
+    /**
+     * @generator
+     * @param {Node} startNode 
+     * @param {Node} stopNode 
+     * @param {Set<Node>} visitedNodes 
+     * @param {Node[]} paths
+     * @yields {string[]}
+     */
     *subFindAllPaths(startNode, stopNode, visitedNodes, paths) {
         visitedNodes.add(startNode)
         paths.push(startNode)
@@ -43,6 +56,11 @@ class PathFinder {
         paths.pop()
         visitedNodes.delete(startNode)
     }
+    /**
+     * @param {string} start 
+     * @param {string} stop 
+     * @returns {string[]}
+     */
     findShortest(start, stop) {
         let paths = Array.from(this.findAllPaths(start, stop))
         return paths.reduce((prev, curr) => prev.length < curr.length ? prev : curr)
