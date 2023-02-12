@@ -1,16 +1,27 @@
 <script setup>
-import { computed } from 'vue'
-import { useRoute } from 'vue-router'
+import { watch, computed } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
 import { useFriendsStore } from '@/stores/friends'
 import GoogleMapEmbed from '@/components/GoogleMapEmbed.vue'
 
 const route = useRoute()
+const router = useRouter()
 const store = useFriendsStore()
 const friend = computed(() => {
   return typeof store.friends[route.params.id] === 'undefined' ? null :
     store.friends[route.params.id]
 })
-const msg = 'hi'
+
+const isFriendListReady = computed(() => {
+  return store.friends.length > 0;
+})
+watch(isFriendListReady, async(newValue, oldValue) => {
+  console.log(newValue)
+  console.log(friend.value === null)
+  if (newValue && friend.value === null) {
+    router.push('/404')
+  }
+})
 </script>
 
 <template>
