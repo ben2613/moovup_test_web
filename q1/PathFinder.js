@@ -1,4 +1,4 @@
-export default class PathFinder {
+class PathFinder {
     /**
      * @param {string[]} nodes ['A', 'B', 'C']
      * @param {string[][]} connections [['A', 'H'], ['A', 'B'], ...]
@@ -59,3 +59,6 @@ class Node {
         node.connectedNodes.add(this)
     }
 }
+
+module.exports = PathFinder
+module.exports.Node = Node

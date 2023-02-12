@@ -1,4 +1,4 @@
-import PathFinder from "./PathFinder.js"
+const PathFinder = require('./PathFinder')
 
 let pathFinder = new PathFinder(['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'],
     [

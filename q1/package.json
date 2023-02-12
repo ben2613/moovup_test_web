@@ -2,7 +2,6 @@
   "name": "q1",
   "version": "1.0.0",
   "description": "",
-  "type": "module",
   "main": "main.js",
   "scripts": {
     "start": "node main.js"
