@@ -1,25 +1,23 @@
 export default class PathFinder {
-    constructor() {
+    /**
+     * @param {string[]} nodes ['A', 'B', 'C']
+     * @param {string[][]} connections [['A', 'H'], ['A', 'B'], ...]
+     */
+    constructor(nodes, connections) {
         this.nodes = Object.fromEntries(
-            ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'].map(
+            nodes.map(
                 c => [c, new Node(c)]
             )
         )
-        this.init()
+        this.init(connections)
     }
-    init() {
-        this.nodes.A.connect(this.nodes.B)
-        this.nodes.A.connect(this.nodes.D)
-        this.nodes.A.connect(this.nodes.H)
-        this.nodes.B.connect(this.nodes.C)
-        this.nodes.B.connect(this.nodes.D)
-        this.nodes.C.connect(this.nodes.F)
-        this.nodes.C.connect(this.nodes.D)
-        this.nodes.D.connect(this.nodes.E)
-        this.nodes.F.connect(this.nodes.G)
-        this.nodes.F.connect(this.nodes.E)
-        this.nodes.E.connect(this.nodes.H)
-        this.nodes.G.connect(this.nodes.H)
+    /**
+     * @param {string[][]} connections [['A', 'H'], ['A', 'B']]
+     */
+    init(connections) {
+        connections.forEach(([start, end]) => {
+            this.nodes[start].connect(this.nodes[end])
+        })
     }
     findAllPaths(start, stop) {
         let visitedNodes = new Set()
